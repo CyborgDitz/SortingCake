@@ -57,9 +57,9 @@ build CMakeFiles/SortingCake.dir/main.c.obj: C_COMPILER__SortingCake_unscanned_D
   OBJECT_DIR = CMakeFiles\SortingCake.dir
   OBJECT_FILE_DIR = CMakeFiles\SortingCake.dir
 
-build CMakeFiles/SortingCake.dir/QuickSort.c.obj: C_COMPILER__SortingCake_unscanned_Debug C$:/Projects/C.Projects/SortingCake/QuickSort.c || cmake_object_order_depends_target_SortingCake
+build CMakeFiles/SortingCake.dir/quickSort.c.obj: C_COMPILER__SortingCake_unscanned_Debug C$:/Projects/C.Projects/SortingCake/quickSort.c || cmake_object_order_depends_target_SortingCake
   DEFINES = -DGRAPHICS_API_OPENGL_33 -DPLATFORM_DESKTOP
-  DEP_FILE = CMakeFiles\SortingCake.dir\QuickSort.c.obj.d
+  DEP_FILE = CMakeFiles\SortingCake.dir\quickSort.c.obj.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -IC:/raylib/raylib/src -IC:/raylib/raylib/src/external/glfw/include
   OBJECT_DIR = CMakeFiles\SortingCake.dir
@@ -73,7 +73,7 @@ build CMakeFiles/SortingCake.dir/QuickSort.c.obj: C_COMPILER__SortingCake_unscan
 #############################################
 # Link the executable SortingCake.exe
 
-build SortingCake.exe: C_EXECUTABLE_LINKER__SortingCake_Debug CMakeFiles/SortingCake.dir/main.c.obj CMakeFiles/SortingCake.dir/QuickSort.c.obj | raylib_build/raylib/libraylib.a || raylib_build/raylib/external/glfw/src/glfw raylib_build/raylib/libraylib.a
+build SortingCake.exe: C_EXECUTABLE_LINKER__SortingCake_Debug CMakeFiles/SortingCake.dir/main.c.obj CMakeFiles/SortingCake.dir/quickSort.c.obj | raylib_build/raylib/libraylib.a || raylib_build/raylib/external/glfw/src/glfw raylib_build/raylib/libraylib.a
   FLAGS = -g
   LINK_LIBRARIES = raylib_build/raylib/libraylib.a  -lopengl32  -lglu32  -lwinmm  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\SortingCake.dir
