@@ -13,7 +13,7 @@ typedef struct {
   } Item;
 typedef struct {
   int slots[10];
-  }Inventorty;
+  }Inventory;
 
 
 #endif //ITEMS_H
