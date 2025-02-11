@@ -1,40 +1,23 @@
-  #ifndef ITEMS_H
-  #define ITEMS_H
+#ifndef ITEMS_H
+#define ITEMS_H
 
-  #define NUM_ITEMS (10)
+#define NUM_ITEMS (10)
 
-typedef enum {
-  ITEM_SWORD,
-  ITEM_ROD,
-  ITEM_BOW,
-  ITEM_SHIELD,
-  ITEM_ARMOR,
-  ITEM_HAT,
-  ITEM_GOLDBAR,
-  ITEM_POCKET_SAND,
-  ITEM_POCKET_GOBLIN,
-  ITEM_KEY,
-  ITEM_COUNT
-} ItemType;
+typedef struct {
+  char name[20];
+  int price;
+  float weight;
+  int quantity;
+  float addedDate;
+} ItemData;
+
+typedef struct {
+  int slots[10];
+} Inventory;
+extern const ItemData itemData[NUM_ITEMS];
+void insertItem(const char *key, const ItemData *item);
+void printItem();
 
 
-  typedef struct {
-    ItemType itemId;
-    char name[20];
-    int price;
-    float weight;
-    int quantity;
-    float addedDate;
-  } ItemData;
 
-  typedef struct {
-    int slots[10];
-  } Inventory;
-
-  extern ItemData items[NUM_ITEMS];
-
-  void initializeItems();
-  void initializeAllItems();
-  void printItems();
-
-  #endif // ITEMS_H
+#endif // ITEMS_H

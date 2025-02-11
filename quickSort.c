@@ -1,16 +1,18 @@
 #include <stdio.h>
+#include "quickSort.h"// For collectAllItems()
 #include "items.h"
 
+// ----------------- SWAP -------------------
 void swapItemData(ItemData *a, ItemData *b) {
     ItemData temp = *a;
     *a = *b;
     *b = temp;
 }
 
+// ----------------- PARTITION: PRICE -------------------
 int partitionByPrice(ItemData arr[], int low, int high) {
     int pivot = arr[high].price;
     int i = (low - 1);
-
     for (int j = low; j < high; j++) {
         if (arr[j].price <= pivot) {
             i++;
@@ -24,24 +26,24 @@ int partitionByPrice(ItemData arr[], int low, int high) {
 void quickSortByPrice(ItemData arr[], int low, int high) {
     if (low < high) {
         int pi = partitionByPrice(arr, low, high);
-
         quickSortByPrice(arr, low, pi - 1);
         quickSortByPrice(arr, pi + 1, high);
     }
 }
 
-void printItemsSortedByPrice() {
+void printItemsSortedByPrice(const ItemData arr[], int count) {
     printf("\n=== Items Sorted by Price ===\n\n");
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        printf("ID: %d | Name: %s | Price: %d\n",
-               items[i].itemId, items[i].name, items[i].price);
+    for (int i = 0; i < count; i++) {
+        printf("Name: %s | Price: %d\n",
+               arr[i].name, arr[i].price);
     }
     printf("\nSorting was done by: Price\n\n");
 }
-int partitionByWeight(ItemData arr[], int low, int high) {
-    float pivot = arr[high].weight;  // Pivot on 'weight'
-    int i = (low - 1);
 
+// ----------------- PARTITION: WEIGHT -------------------
+int partitionByWeight(ItemData arr[], int low, int high) {
+    float pivot = arr[high].weight;
+    int i = (low - 1);
     for (int j = low; j < high; j++) {
         if (arr[j].weight <= pivot) {
             i++;
@@ -55,24 +57,24 @@ int partitionByWeight(ItemData arr[], int low, int high) {
 void quickSortByWeight(ItemData arr[], int low, int high) {
     if (low < high) {
         int pi = partitionByWeight(arr, low, high);
-
         quickSortByWeight(arr, low, pi - 1);
         quickSortByWeight(arr, pi + 1, high);
     }
 }
 
-void printItemsSortedByWeight() {
+void printItemsSortedByWeight(const ItemData arr[], int count) {
     printf("\n=== Items Sorted by Weight ===\n\n");
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        printf("ID: %d | Name: %s | Weight: %.2f\n",
-               items[i].itemId, items[i].name, items[i].weight);
+    for (int i = 0; i < count; i++) {
+        printf("Name: %s | Weight: %.2f\n",
+               arr[i].name, arr[i].weight);
     }
     printf("\nSorting was done by: Weight\n\n");
 }
-int partitionByQuantity(ItemData arr[], int low, int high) {
-    int pivot = arr[high].quantity;  // Pivot on 'quantity'
-    int i = (low - 1);
 
+// ----------------- PARTITION: QUANTITY -------------------
+int partitionByQuantity(ItemData arr[], int low, int high) {
+    int pivot = arr[high].quantity;
+    int i = (low - 1);
     for (int j = low; j < high; j++) {
         if (arr[j].quantity <= pivot) {
             i++;
@@ -86,24 +88,24 @@ int partitionByQuantity(ItemData arr[], int low, int high) {
 void quickSortByQuantity(ItemData arr[], int low, int high) {
     if (low < high) {
         int pi = partitionByQuantity(arr, low, high);
-
         quickSortByQuantity(arr, low, pi - 1);
         quickSortByQuantity(arr, pi + 1, high);
     }
 }
 
-void printItemsSortedByQuantity() {
+void printItemsSortedByQuantity(const ItemData arr[], int count) {
     printf("\n=== Items Sorted by Quantity ===\n\n");
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        printf("ID: %d | Name: %s | Quantity: %d\n",
-               items[i].itemId, items[i].name, items[i].quantity);
+    for (int i = 0; i < count; i++) {
+        printf("Name: %s | Quantity: %d\n",
+               arr[i].name, arr[i].quantity);
     }
     printf("\nSorting was done by: Quantity\n\n");
 }
-int partitionByDate(ItemData arr[], int low, int high) {
-    float pivot = arr[high].addedDate;  // Pivot on 'addedDate'
-    int i = (low - 1);
 
+// ----------------- PARTITION: DATE -------------------
+int partitionByDate(ItemData arr[], int low, int high) {
+    float pivot = arr[high].addedDate;
+    int i = (low - 1);
     for (int j = low; j < high; j++) {
         if (arr[j].addedDate <= pivot) {
             i++;
@@ -117,34 +119,57 @@ int partitionByDate(ItemData arr[], int low, int high) {
 void quickSortByDate(ItemData arr[], int low, int high) {
     if (low < high) {
         int pi = partitionByDate(arr, low, high);
-
         quickSortByDate(arr, low, pi - 1);
         quickSortByDate(arr, pi + 1, high);
     }
 }
 
-void printItemsSortedByDate() {
+void printItemsSortedByDate(const ItemData arr[], int count) {
     printf("\n=== Items Sorted by Date Added ===\n\n");
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        printf("ID: %d | Name: %s | AddedDate: %.2f\n",
-               items[i].itemId, items[i].name, items[i].addedDate);
+    for (int i = 0; i < count; i++) {
+        printf("Name: %s | AddedDate: %.2f\n",
+               arr[i].name, arr[i].addedDate);
     }
     printf("\nSorting was done by: Date Added\n\n");
 }
 
+// --------------- "ENTRY POINT" SORTS ---------------
+//
+// Each of these collects items from the hash table,
+// calls the quicksort, and prints the result.
+//
 void sortPrice() {
-    quickSortByPrice(items, 0, NUM_ITEMS - 1);
-    printItemsSortedByPrice();
+    // Collect all items from the hashtable
+    // We'll assume a max of 100 items, but adjust as needed
+    ItemData tempArray[100];
+    int count = collectAllItems(tempArray, 100);
+
+    // Now quick-sort them by price
+    quickSortByPrice(tempArray, 0, count - 1);
+    // Print
+    printItemsSortedByPrice(tempArray, count);
 }
+
 void sortWeight() {
-    quickSortByWeight(items, 0, NUM_ITEMS - 1);
-    printItemsSortedByWeight();
+    ItemData tempArray[100];
+    int count = collectAllItems(tempArray, 100);
+
+    quickSortByWeight(tempArray, 0, count - 1);
+    printItemsSortedByWeight(tempArray, count);
 }
+
 void sortQuantity() {
-    quickSortByWeight(items, 0, NUM_ITEMS - 1);
-    printItemsSortedByWeight();
+    ItemData tempArray[100];
+    int count = collectAllItems(tempArray, 100);
+
+    quickSortByQuantity(tempArray, 0, count - 1);
+    printItemsSortedByQuantity(tempArray, count);
 }
+
 void sortDate() {
-    quickSortByDate(items, 0, NUM_ITEMS - 1);
-    printItemsSortedByDate();
+    ItemData tempArray[100];
+    int count = collectAllItems(tempArray, 100);
+
+    quickSortByDate(tempArray, 0, count - 1);
+    printItemsSortedByDate(tempArray, count);
 }

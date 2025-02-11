@@ -13,6 +13,7 @@ add_subdirectory("C:/raylib/raylib" raylib_build)
 # Create an executable using main.cpp.
 add_executable(SortingCake main.c
         item.c
+        hashing.c
         quickSort.c)
 
 # Link your executable to the raylib target.

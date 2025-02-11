@@ -3,38 +3,24 @@
 #include <stdio.h>
 
 
-static const ItemData itemData[NUM_ITEMS] = {
-    { ITEM_SWORD,         "Sword",        100, 6.3f,  6,   0 },
-    { ITEM_ROD,           "Rod",          150, 4.0f,  1,   0 },
-    { ITEM_BOW,           "Bow",          120, 5.0f,  5,   0 },
-    { ITEM_SHIELD,        "Shield",        80, 3.0f,  2,   0 },
-    { ITEM_ARMOR,         "Armor",        350, 10.0f, 1,   0 },
-    { ITEM_HAT,           "Hat",           50, 0.0f,  42,  0 },
-    { ITEM_GOLDBAR,       "Goldbar",      500, 4.0f,  333, 0 },
-    { ITEM_POCKET_SAND,   "Pocket Sand",    5, 1.0f,  69,  0 },
-    { ITEM_POCKET_GOBLIN, "Pocket Goblin", 666, 8.0f,  666, 0 },
-    { ITEM_KEY,           "Key",           30, 2.0f,  0,   0 }
+extern const ItemData itemData[NUM_ITEMS] = {
+    {         "Sword",        100, 6.3f,  6,   0 },
+    {            "Rod",          150, 4.0f,  1,   0 },
+    {           "Bow",          120, 5.0f,  5,   0 },
+    {         "Shield",        80, 3.0f,  2,   0 },
+    {         "Armor",        350, 10.0f, 1,   0 },
+    {            "Hat",           50, 0.0f,  42,  0 },
+    {        "Goldbar",      500, 4.0f,  333, 0 },
+    {    "Pocket Sand",    5, 1.0f,  69,  0 },
+    {  "Pocket Goblin", 666, 8.0f,  666, 0 },
+    {         "Key",           30, 2.0f,  0,   0 }
 };
+//todo replace with hashtable
 
 ItemData items[NUM_ITEMS];
 
-
-ItemData createItem(ItemType itemId)
-{
-    ItemData newItem = itemData[itemId];
-    newItem.addedDate = (float)(itemId + 1);
-    return newItem;
-}
-void initializeAllItems()
-{
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        items[i] = createItem((ItemType)i);
-    }
-}
-
 void initializeItems() {
     for (size_t i = 0; i < NUM_ITEMS; i++){
-        items[i].itemId = itemData[i].itemId;
         strncpy(items[i].name, itemData[i].name, sizeof(items[i].name) - 1);
         items[i].name[sizeof(items[i].name) - 1] = '\0';
         items[i].price = itemData[i].price;
@@ -44,14 +30,16 @@ void initializeItems() {
     }
 }
 
-void printItems() {
-    for (size_t i = 0; i < NUM_ITEMS; i++) {
-        printf("Item %zu:\n", i);
-        printf("  ID: %d\n", items[i].itemId);
-        printf("  Name: %s\n", items[i].name);
-        printf("  Price: %d\n", items[i].price);
-        printf("  Weight: %.2f\n", items[i].weight);
-        printf("  Quantity: %d\n", items[i].quantity);
-        printf("  Time Added to Inv: %.2f seconds\n\n", items[i].addedDate);
+void printItem(const ItemData *item) {
+    if (!item) {
+        printf("Item is NULL\n");
+        return;
     }
+    printf("Name: %s\n",    item->name);
+    printf("Price: %d\n",   item->price);
+    printf("Weight: %.2f\n", item->weight);
+    printf("Quantity: %d\n", item->quantity);
+    printf("Time Added: %.2f\n", item->addedDate);
+    printf("\n");
+
 }
