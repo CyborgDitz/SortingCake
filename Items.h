@@ -33,8 +33,8 @@ typedef enum {
 
   extern ItemData items[NUM_ITEMS];
 
-  void initializeItems(void);
-  void initializeAllItems(void);
-  void printItems(void);
+  void initializeItems();
+  void initializeAllItems();
+  void printItems();
 
   #endif // ITEMS_H

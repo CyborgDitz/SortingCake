@@ -25,15 +25,15 @@ ItemData createItem(ItemType itemId)
     newItem.addedDate = (float)(itemId + 1);
     return newItem;
 }
-void initializeAllItems(void)
+void initializeAllItems()
 {
     for (size_t i = 0; i < NUM_ITEMS; i++) {
         items[i] = createItem((ItemType)i);
     }
 }
 
-void initializeItems(void) {
-    for (size_t i = 0; i < NUM_ITEMS, i++;) {
+void initializeItems() {
+    for (size_t i = 0; i < NUM_ITEMS; i++){
         items[i].itemId = itemData[i].itemId;
         strncpy(items[i].name, itemData[i].name, sizeof(items[i].name) - 1);
         items[i].name[sizeof(items[i].name) - 1] = '\0';
@@ -44,7 +44,7 @@ void initializeItems(void) {
     }
 }
 
-void printItems(void) {
+void printItems() {
     for (size_t i = 0; i < NUM_ITEMS; i++) {
         printf("Item %zu:\n", i);
         printf("  ID: %d\n", items[i].itemId);

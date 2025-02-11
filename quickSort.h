@@ -1,12 +1,29 @@
-//
-// Created by sebba on 2/10/2025.
-//
+#ifndef QUICKSORT_H
+#define QUICKSORT_H
 
-#ifndef QUICK_SORT_H
-#define QUICK_SORT_H
+#include "items.h"
 
-void swap(int *a, int *b);
-void partition(int array[], int low, int high);
-void quickSort(int array[], int low, int high);
-void printArray(int array[], int size);
-#endif //QUICK_SORT_H
+
+void swapItemData(ItemData *a, ItemData *b);
+
+int partitionByPrice(ItemData arr[], int low, int high);
+void quickSortByPrice(ItemData arr[], int low, int high);
+void printItemsSortedByPrice();
+
+int partitionByWeight(ItemData arr[], int low, int high);
+void quickSortByWeight(ItemData arr[], int low, int high);
+void printItemsSortedByWeight();
+
+int partitionByQuantity(ItemData arr[], int low, int high);
+void quickSortByQuantity(ItemData arr[], int low, int high);
+void printItemsSortedByQuantity();
+
+int partitionByDate(ItemData arr[], int low, int high);
+void quickSortByDate(ItemData arr[], int low, int high);
+void printItemsSortedByDate();
+
+void sortPrice();
+void sortWeight();
+void sortQuantity();
+void sortDate();
+#endif // QUICKSORT_H

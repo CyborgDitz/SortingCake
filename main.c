@@ -2,21 +2,48 @@
 #include "quickSort.h"
 #include "Items.h"
 
+int main(void)
+{
+    initializeItems();
+    int choice = -1;
 
-int main() {
-    int data[] = {8, 7, 2, 1, 0, 9, 6};
-    int n = sizeof(data) / sizeof(data[0]);
+    while (1) {
+        printf("\nChoose an option:\n");
+        printf("1 -> Sort by Price\n");
+        printf("2 -> Sort by Weight\n");
+        printf("3 -> Sort by Quantity\n");
+        printf("4 -> Sort by Date\n");
+        printf("6 -> Print All Item Data\n");
+        printf("0 -> Exit\n");
+        printf("\nEnter your choice (0-6): ");
+        scanf("%d", &choice);
 
-    printf("Unsorted array: ");
-    printArray(data, n);
+        if (choice == 0) {
+            printf("Exiting...\n");
+            break;
+        }
 
-    quickSort(data, 0, n - 1);
+        switch (choice) {
+            case 1:
+                sortPrice();
+            break;
+            case 2:
+                sortWeight();
+            break;
+            case 3:
+                sortQuantity();
+            break;
+            case 4:
+                sortDate();
+            break;
+            case 6:
+                printItems();
+            break;
+            default:
+                printf("Invalid choice. Please choose an option between 0 and 6.\n");
+            break;
+        }
+    }
 
-    printf("Sorted array: ");
-    printArray(data, n);
-    initializeAllItems();
-    //initializeItems();
-    printItems();
-    printf("Item ID: %d\n", items[2].itemId);
     return 0;
 }
