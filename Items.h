@@ -1,11 +1,9 @@
-//
-// Created by sebba on 2/10/2025.
-//
+  #ifndef ITEMS_H
+  #define ITEMS_H
 
-#ifndef ITEMS_H
-#define ITEMS_H
+  #define NUM_ITEMS (10)
+
 typedef enum {
-  ITEM_NONE,
   ITEM_SWORD,
   ITEM_ROD,
   ITEM_BOW,
@@ -16,17 +14,27 @@ typedef enum {
   ITEM_POCKET_SAND,
   ITEM_POCKET_GOBLIN,
   ITEM_KEY,
+  ITEM_COUNT
 } ItemType;
-typedef struct {
-    char name[10];
-    int price;
-    int weight;
-    int quantity;
-    int addedDate[10];
-  ItemType itemType;
-  } Item;
-typedef struct {
-  int slots[10];
-  }Inventory;
 
-#endif //ITEMS_H
+
+  typedef struct {
+    ItemType itemId;
+    char name[20];
+    int price;
+    float weight;
+    int quantity;
+    float addedDate;
+  } ItemData;
+
+  typedef struct {
+    int slots[10];
+  } Inventory;
+
+  extern ItemData items[NUM_ITEMS];
+
+  void initializeItems(void);
+  void initializeAllItems(void);
+  void printItems(void);
+
+  #endif // ITEMS_H

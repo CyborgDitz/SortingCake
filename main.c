@@ -14,6 +14,9 @@ int main() {
 
     printf("Sorted array: ");
     printArray(data, n);
-
+    initializeAllItems();
+    //initializeItems();
+    printItems();
+    printf("Item ID: %d\n", items[2].itemId);
     return 0;
 }
