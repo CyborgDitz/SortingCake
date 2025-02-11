@@ -29,5 +29,4 @@ typedef struct {
   int slots[10];
   }Inventory;
 
-
 #endif //ITEMS_H

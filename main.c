@@ -10,7 +10,6 @@ int main() {
     printf("Unsorted array: ");
     printArray(data, n);
 
-    // Call quickSort on the array
     quickSort(data, 0, n - 1);
 
     printf("Sorted array: ");
