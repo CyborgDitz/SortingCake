@@ -45,3 +45,11 @@
 91	184	7609857967517558	SortingCake.exe	412ce49f09c0031b
 11	120	7609864441643619	CMakeFiles/SortingCake.dir/Hashing.c.obj	6aa96da7222c5462
 120	240	7609864442724747	SortingCake.exe	412ce49f09c0031b
+8	104	7609865709712575	CMakeFiles/SortingCake.dir/main.c.obj	5aad0a40bdcc0b5c
+14	112	7609865709780033	CMakeFiles/SortingCake.dir/quickSort.c.obj	bea0bd07a401f422
+112	203	7609865710760728	SortingCake.exe	412ce49f09c0031b
+9	101	7609867331174631	CMakeFiles/SortingCake.dir/main.c.obj	5aad0a40bdcc0b5c
+15	104	7609867331239671	CMakeFiles/SortingCake.dir/Hashing.c.obj	6aa96da7222c5462
+104	210	7609867332128198	SortingCake.exe	412ce49f09c0031b
+11	120	7609867495385846	CMakeFiles/SortingCake.dir/quickSort.c.obj	bea0bd07a401f422
+120	219	7609867496471795	SortingCake.exe	412ce49f09c0031b

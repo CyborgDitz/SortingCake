@@ -50,7 +50,7 @@ int main(void)
                 sortDate();
                 break;
             case 6: {
-                // Collect and print all items unsorted
+
                 ItemData arr[100];
                 int count = collectAllItems(arr, 100);
                 printf("\n=== Printing All Items (unsorted) ===\n\n");
@@ -65,7 +65,6 @@ int main(void)
         }
     }
 
-    // Cleanup
     freeHashTable();
     return 0;
 }

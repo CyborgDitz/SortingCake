@@ -21,5 +21,5 @@ ItemData* findItem(const char *key);
 void freeHashTable(void);
 
 void initializeHashTable(void);
-
+int collectAllItems(ItemData arr[], int maxSize);
 #endif //HASHING_H

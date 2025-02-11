@@ -1,15 +1,15 @@
 #include <stdio.h>
-#include "quickSort.h"// For collectAllItems()
+#include "quickSort.h"
 #include "items.h"
+#include "hashing.h"
 
-// ----------------- SWAP -------------------
+
 void swapItemData(ItemData *a, ItemData *b) {
     ItemData temp = *a;
     *a = *b;
     *b = temp;
 }
 
-// ----------------- PARTITION: PRICE -------------------
 int partitionByPrice(ItemData arr[], int low, int high) {
     int pivot = arr[high].price;
     int i = (low - 1);
@@ -40,7 +40,6 @@ void printItemsSortedByPrice(const ItemData arr[], int count) {
     printf("\nSorting was done by: Price\n\n");
 }
 
-// ----------------- PARTITION: WEIGHT -------------------
 int partitionByWeight(ItemData arr[], int low, int high) {
     float pivot = arr[high].weight;
     int i = (low - 1);
