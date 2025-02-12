@@ -70,7 +70,6 @@ void printItemsSortedByWeight(const ItemData arr[], int count) {
     printf("\nSorting was done by: Weight\n\n");
 }
 
-// ----------------- PARTITION: QUANTITY -------------------
 int partitionByQuantity(ItemData arr[], int low, int high) {
     int pivot = arr[high].quantity;
     int i = (low - 1);
